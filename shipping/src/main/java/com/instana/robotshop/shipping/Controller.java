@@ -72,8 +72,9 @@ public class Controller {
 
         Iterable<Code> codes = coderepo.findAll(Sort.by(Sort.Direction.ASC, "name"));
         int Value = 5;
-        for (int i = 0 ; i < 10000000000000000; i++){
+        for (int i = 0 ; i < 2147483647; i++){
             Value = Value + 5;
+            logger.info(Value);
         }
         logger.info(Value);
 
