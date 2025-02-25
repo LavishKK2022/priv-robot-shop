@@ -74,9 +74,8 @@ public class Controller {
         int Value = 5;
         for (int i = 0 ; i < 2147483647; i++){
             Value = Value + 5;
-            logger.info(Value);
+            logger.info(String.valueOf(Value));
         }
-        logger.info(Value);
 
         return codes;
     }
