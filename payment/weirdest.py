@@ -2,6 +2,7 @@
 
 import os
 import json
+import rabbitmq
 import some.deeply.nested.module as deep_module
 from another.module import some_function as renamed_func
 from third.module.sub import *
