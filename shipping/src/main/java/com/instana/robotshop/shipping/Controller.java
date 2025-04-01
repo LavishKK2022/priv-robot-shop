@@ -66,19 +66,8 @@ public class Controller {
         return String.valueOf(count);
     }
 
-    @GetMapping("/codes")
-    public Iterable<Code> codes() {
-        logger.info("all codes");
-
-        Iterable<Code> codes = coderepo.findAll(Sort.by(Sort.Direction.ASC, "name"));
-        int Value = 5;
-        for (int i = 0 ; i < 2147483647; i++){
-            Value = Value + 5;
-            logger.info(String.valueOf(Value));
-        }
-
-        return codes;
-    }
+    
+@GetMapping("/codes") public Iterable<Code> codes() { logger.info("all codes"); return coderepo.findAll(Sort.by(Sort.Direction.ASC, "name")); }
 
     @GetMapping("/cities/{code}")
     public List<City> cities(@PathVariable String code) {
