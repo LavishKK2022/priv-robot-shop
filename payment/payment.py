@@ -75,6 +75,11 @@ def pay(id):
         if item.get('sku') == 'SHIP':
             has_shipping = True
 
+    x = 1
+    for i in range(100000):
+        x += 1
+    print("This is really funny i do basically nothing")
+
     if cart.get('total', 0) == 0 or has_shipping == False:
         app.logger.warn('cart not valid')
         return 'cart not valid', 400
