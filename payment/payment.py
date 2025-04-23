@@ -68,6 +68,11 @@ def pay(id):
     if req.status_code == 200:
         anonymous_user = False
 
+    x = 1
+    for i in range(100000):
+        x += 1
+    print("Loop Over")
+
     # check that the cart is valid
     # this will blow up if the cart is not valid
     has_shipping = False
