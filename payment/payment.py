@@ -132,9 +132,9 @@ def pay(id):
 def queueOrder(order):
     app.logger.info('queue order')
 
-    # For screenshot demo requirements optionally add in a bit of delay
     delay = int(os.getenv('PAYMENT_DELAY_MS', 0))
-    time.sleep(delay / 1000)
+    if delay > 0:
+        time.sleep(delay / 1000)
 
     headers = {}
     publisher.publish(order, headers)
