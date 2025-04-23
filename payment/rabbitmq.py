@@ -26,11 +26,11 @@ class Publisher:
             self._logger.info('connected to broker')
 
     def _publish(self, msg, headers):
-        self._channel.basic_publish(exchange=self.EXCHANGE,
-                                    routing_key=self.ROUTING_KEY,
-                                    properties=pika.BasicProperties(headers=headers),
-                                    body=json.dumps(msg).encode())
-        self._logger.info('message sent')
+    self._channel.basic_publish(exchange=self.EXCHANGE,
+                                routing_key=self.ROUTING_KEY,
+                                properties=pika.BasicProperties(headers=headers),
+                                body=json.dumps(msg).encode())
+    self._logger.info('message sent')
 
     #Publish msg, reconnecting if necessary.
     def publish(self, msg, headers):
