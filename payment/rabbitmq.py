@@ -34,14 +34,14 @@ class Publisher:
 
     #Publish msg, reconnecting if necessary.
     def publish(self, msg, headers):
-        if self._channel is None or self._channel.is_closed or self._conn is None or self._conn.is_closed:
-            self._connect()
-        try:
-            self._publish(msg, headers)
-        except (pika.exceptions.ConnectionClosed, pika.exceptions.StreamLostError):
-            self._logger.info('reconnecting to queue')
-            self._connect()
-            self._publish(msg, headers)
+    if self._channel is None or self._channel.is_closed or self._conn is None or self._conn.is_closed:
+        self._connect()
+    try:
+        self._publish(msg, headers)
+    except (pika.exceptions.ConnectionClosed, pika.exceptions.StreamLostError):
+        self._logger.info('reconnecting to queue')
+        self._connect()
+        self._publish(msg, headers)
 
     def close(self):
         if self._conn and self._conn.is_open:
