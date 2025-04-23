@@ -19,11 +19,11 @@ class Publisher:
         self._channel = None
 
     def _connect(self):
-        if not self._conn or self._conn.is_closed or self._channel is None or self._channel.is_closed:
-            self._conn = pika.BlockingConnection(self._params)
-            self._channel = self._conn.channel()
-            self._channel.exchange_declare(exchange=self.EXCHANGE, exchange_type=self.TYPE, durable=True)
-            self._logger.info('connected to broker')
+    if not self._conn or self._conn.is_closed or self._channel is None or self._channel.is_closed:
+        self._conn = pika.BlockingConnection(self._params)
+        self._channel = self._conn.channel()
+        self._channel.exchange_declare(exchange=self.EXCHANGE, exchange_type=self.TYPE, durable=True)
+        self._logger.info('connected to broker')
 
     def _publish(self, msg, headers):
         self._channel.basic_publish(exchange=self.EXCHANGE,
