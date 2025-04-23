@@ -68,19 +68,10 @@ def pay(id):
     if req.status_code == 200:
         anonymous_user = False
 
-    x = 1
-    for i in range(100000):
-        x += 1
-    print("Loop Over")
-
     # check that the cart is valid
-    # this will blow up if the cart is not valid
-    has_shipping = False
-    for item in cart.get('items'):
-        if item.get('sku') == 'SHIP':
-            has_shipping = True
+    has_shipping = any(item.get('sku') == 'SHIP' for item in cart.get('items', []))
 
-    if cart.get('total', 0) == 0 or has_shipping == False:
+    if cart.get('total', 0) == 0 or not has_shipping:
         app.logger.warn('cart not valid')
         return 'cart not valid', 400
 
@@ -95,7 +86,6 @@ def pay(id):
         return 'payment error', req.status_code
 
     # Prometheus
-    # items purchased
     item_count = countItems(cart.get('items', []))
     PromMetrics['SOLD_COUNTER'].inc(item_count)
     PromMetrics['AUS'].observe(item_count)
