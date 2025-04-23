@@ -125,4 +125,4 @@ To test the metrics use:
 $ curl http://<host>:8080/api/cart/metrics
 $ curl http://<host>:8080/api/payment/metrics
 ```
-
+The microservices application is hosted on 8080
